@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-layout">
+        <div class="left-panel">
+            <div class="panel-card">
+                <h3 class="panel-title">Players</h3>
+                <div class="player player1 active" id="player1">
+                    <div class="player-icon">✕</div>
+                    <div class="player-info">
+                        <h2>Player 1</h2>
+                    </div>
+                    <div class="score" id="score1">0</div>
+                </div>
+                <div class="vs-divider">VS</div>
+                <div class="player player2" id="player2">
+                    <div class="player-icon">○</div>
+                    <div class="player-info">
+                        <h2 id="p2-name">Player 2</h2>
+                    </div>
+                    <div class="score" id="score2">0</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="center-panel">
+            <div class="header-group">
+                <h1>Tic Tac Toe</h1>
+                <p class="subtitle">Challenge your friends or battle the AI!</p>
+            </div>
+            <div class="status" id="status">Player 1's Turn (X)</div>
+            <div class="board" id="board">
+                <div class="cell" data-index="0"></div>
+                <div class="cell" data-index="1"></div>
+                <div class="cell" data-index="2"></div>
+                <div class="cell" data-index="3"></div>
+                <div class="cell" data-index="4"></div>
+                <div class="cell" data-index="5"></div>
+                <div class="cell" data-index="6"></div>
+                <div class="cell" data-index="7"></div>
+                <div class="cell" data-index="8"></div>
+            </div>
+            <button id="reset" class="btn reset-btn">
+                <span class="reset-icon">↻</span> New Round
+            </button>
+        </div>
+
+        <div class="right-panel">
+            <div class="panel-card">
+                <h3 class="panel-title">Game Mode</h3>
+                <div class="mode-selector">
+                    <button class="btn mode-btn active" data-mode="PvP">
+                        <span class="mode-emoji">👥</span> vs Friend
+                    </button>
+                    <button class="btn mode-btn" data-mode="AI-Easy">
+                        <span class="mode-emoji">🤖</span> vs AI (Easy)
+                    </button>
+                    <button class="btn mode-btn" data-mode="AI-Hard">
+                        <span class="mode-emoji">🧠</span> vs AI (Hard)
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

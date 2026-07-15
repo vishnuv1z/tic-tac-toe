@@ -1,0 +1,395 @@
+/* ============ RESET & BASE ============ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background-color: #fffdf7;
+    color: #2d2d2d;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+}
+
+/* ============ LAYOUT ============ */
+.app-layout {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    padding: 30px;
+    max-width: 1200px;
+    width: 100%;
+}
+
+@media (max-width: 900px) {
+    .app-layout {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+}
+
+.left-panel, .right-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 260px;
+}
+
+.center-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* ============ PANEL CARDS ============ */
+.panel-card {
+    background: #ffffff;
+    border: 3px solid #2d2d2d;
+    border-radius: 20px;
+    padding: 24px 20px;
+    box-shadow: 5px 5px 0 #2d2d2d;
+}
+
+.panel-title {
+    text-align: center;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    color: #999;
+    margin-bottom: 20px;
+}
+
+/* ============ HEADER ============ */
+.header-group {
+    margin-bottom: 16px;
+}
+
+h1 {
+    font-size: 3.4rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+    color: #2d2d2d;
+}
+
+.subtitle {
+    color: #888;
+    font-size: 1rem;
+    font-weight: 500;
+    margin-top: 4px;
+}
+
+/* ============ STATUS ============ */
+.status {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #2d2d2d;
+    min-height: 35px;
+    margin-bottom: 20px;
+    padding: 8px 22px;
+    border-radius: 50px;
+    background: #fff3cd;
+    border: 2.5px solid #2d2d2d;
+    box-shadow: 3px 3px 0 #2d2d2d;
+}
+
+/* ============ BOARD ============ */
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 110px);
+    grid-template-rows: repeat(3, 110px);
+    gap: 12px;
+    padding: 18px;
+    background: #fff;
+    border-radius: 24px;
+    border: 3px solid #2d2d2d;
+    box-shadow: 6px 6px 0 #2d2d2d;
+}
+
+.cell {
+    background: #f9f9f5;
+    border-radius: 16px;
+    border: 3px solid #2d2d2d;
+    box-shadow: 3px 3px 0 #2d2d2d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3.5rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    user-select: none;
+}
+
+.cell:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0 #2d2d2d;
+    background: #fff;
+}
+
+.cell:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0 #2d2d2d;
+}
+
+.cell.x {
+    color: #e74c3c;
+    animation: popIn 0.25s ease-out;
+}
+
+.cell.o {
+    color: #3498db;
+    animation: popIn 0.25s ease-out;
+}
+
+/* ============ PLAYER CARDS ============ */
+.player {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px;
+    border-radius: 14px;
+    background: #f9f9f5;
+    border: 2.5px solid #ddd;
+    transition: all 0.25s ease;
+}
+
+.player1 .player-icon {
+    color: #e74c3c;
+    background: #fde2e2;
+}
+
+.player2 .player-icon {
+    color: #3498db;
+    background: #dbeafe;
+}
+
+.player-icon {
+    font-size: 1.4rem;
+    font-weight: 800;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #eee;
+    color: #999;
+    flex-shrink: 0;
+    transition: all 0.25s;
+}
+
+.player-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex: 1;
+    min-width: 0;
+}
+
+.player-info h2 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #555;
+    transition: color 0.25s;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.badge {
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 1px 7px;
+    border-radius: 5px;
+    width: fit-content;
+    letter-spacing: 1px;
+}
+
+.badge-x { background: #fde2e2; color: #e74c3c; }
+.badge-o { background: #dbeafe; color: #3498db; }
+
+.score {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #2d2d2d;
+    transition: all 0.25s;
+    flex-shrink: 0;
+    min-width: 30px;
+    text-align: right;
+}
+
+.vs-divider {
+    text-align: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #ccc;
+    letter-spacing: 3px;
+    padding: 10px 0;
+}
+
+/* Active player — Player 1 gets red, Player 2 gets blue */
+.player1.active {
+    background: #e74c3c;
+    border-color: #2d2d2d;
+    border-width: 2.5px;
+    box-shadow: 3px 3px 0 #2d2d2d;
+    transform: translate(-2px, -2px);
+}
+
+.player1.active .player-icon {
+    background: rgba(255,255,255,0.25);
+    color: #fff;
+}
+
+.player1.active .player-info h2,
+.player1.active .score {
+    color: #fff;
+}
+
+.player1.active .badge-x {
+    background: rgba(255,255,255,0.25);
+    color: #fff;
+}
+
+.player2.active {
+    background: #3498db;
+    border-color: #2d2d2d;
+    border-width: 2.5px;
+    box-shadow: 3px 3px 0 #2d2d2d;
+    transform: translate(-2px, -2px);
+}
+
+.player2.active .player-icon {
+    background: rgba(255,255,255,0.25);
+    color: #fff;
+}
+
+.player2.active .player-info h2,
+.player2.active .score {
+    color: #fff;
+}
+
+.player2.active .badge-o {
+    background: rgba(255,255,255,0.25);
+    color: #fff;
+}
+
+/* ============ MODE SELECTOR ============ */
+.mode-selector {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.btn {
+    padding: 12px 18px;
+    font-size: 1rem;
+    font-weight: 700;
+    font-family: inherit;
+    border: 2.5px solid #2d2d2d;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.mode-btn {
+    background: #fff;
+    color: #2d2d2d;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 3px 3px 0 #2d2d2d;
+}
+
+.mode-emoji {
+    font-size: 1.1rem;
+}
+
+.mode-btn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0 #2d2d2d;
+}
+
+.mode-btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0 #2d2d2d;
+}
+
+.mode-btn.active {
+    background: #fbbf24;
+    color: #2d2d2d;
+    box-shadow: 3px 3px 0 #2d2d2d;
+}
+
+/* ============ RESET BUTTON ============ */
+.reset-btn {
+    width: 100%;
+    margin-top: 24px;
+    background: #2d2d2d;
+    color: #fff;
+    padding: 14px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 1.05rem;
+    box-shadow: 4px 4px 0 #999;
+    border-color: #2d2d2d;
+}
+
+.reset-icon {
+    font-size: 1.2rem;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.reset-btn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 #999;
+}
+
+.reset-btn:hover .reset-icon {
+    transform: rotate(180deg);
+}
+
+.reset-btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 #999;
+}
+
+
+/* ============ CONFETTI ============ */
+.confetti {
+    position: fixed;
+    top: -20px;
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    z-index: 1000;
+    pointer-events: none;
+    animation: confetti-fall linear forwards;
+}
+
+/* ============ KEYFRAMES ============ */
+@keyframes popIn {
+    0% { transform: scale(0); }
+    60% { transform: scale(1.25); }
+    100% { transform: scale(1); }
+}
+
+@keyframes confetti-fall {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 0;
+    }
+}
