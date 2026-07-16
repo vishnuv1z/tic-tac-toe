@@ -333,6 +333,12 @@ h1 {
     transition: all 0.25s;
 }
 
+.icon-svg {
+    width: 50%;
+    height: 50%;
+    display: block;
+}
+
 .player-info {
     display: flex;
     flex-direction: column;

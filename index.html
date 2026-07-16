@@ -15,7 +15,12 @@
             <div class="panel-card">
                 <h3 class="panel-title">Players</h3>
                 <div class="player player1 active" id="player1">
-                    <div class="player-icon">✕</div>
+                    <div class="player-icon">
+                        <svg class="icon-svg" viewBox="0 0 24 24">
+                            <line x1="5" y1="5" x2="19" y2="19" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
+                            <line x1="19" y1="5" x2="5" y2="19" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
+                        </svg>
+                    </div>
                     <div class="player-info">
                         <h2>Player 1</h2>
                     </div>
@@ -23,7 +28,11 @@
                 </div>
                 <div class="vs-divider">VS</div>
                 <div class="player player2" id="player2">
-                    <div class="player-icon">○</div>
+                    <div class="player-icon">
+                        <svg class="icon-svg" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="7.5" stroke="currentColor" stroke-width="3" fill="none" />
+                        </svg>
+                    </div>
                     <div class="player-info">
                         <h2 id="p2-name">Player 2</h2>
                     </div>
