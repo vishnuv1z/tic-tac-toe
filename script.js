@@ -13,6 +13,7 @@ let currentPlayer = 'x'; // 'x' for Player 1, 'o' for Player 2 / AI
 let running = false;
 let isAITurn = false;
 let gameMode = 'PvP'; // PvP, AI-Easy, AI-Hard
+let aiTimeoutId = null;
 
 // Scores
 let p1Score = 0;
@@ -69,7 +70,7 @@ function changePlayer() {
 
     if (running && currentPlayer === 'o' && gameMode.startsWith('AI')) {
         isAITurn = true;
-        setTimeout(makeAIMove, 500); // Small delay for better UX
+        aiTimeoutId = setTimeout(makeAIMove, 500); // Small delay for better UX
     } else {
         isAITurn = false;
     }
@@ -180,6 +181,7 @@ function getBestMove() {
 }
 
 function makeAIMove() {
+    aiTimeoutId = null;
     if (!running) return;
 
     let moveIndex;
@@ -238,6 +240,11 @@ function updateScoreBoard() {
 }
 
 function resetGame(fullReset = false) {
+    if (aiTimeoutId) {
+        clearTimeout(aiTimeoutId);
+        aiTimeoutId = null;
+    }
+
     if (fullReset) {
         p1Score = 0;
         p2Score = 0;
@@ -258,7 +265,7 @@ function resetGame(fullReset = false) {
 
     if (currentPlayer === 'o' && gameMode.startsWith('AI')) {
         isAITurn = true;
-        setTimeout(makeAIMove, 500);
+        aiTimeoutId = setTimeout(makeAIMove, 500);
     }
 }
 
