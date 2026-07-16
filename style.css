@@ -51,6 +51,7 @@ body {
         grid-column: 1;
         grid-row: 2;
         width: 100%;
+        margin-top: 0;
     }
 
     .right-panel {
@@ -155,6 +156,10 @@ body {
     flex-direction: column;
     gap: 20px;
     width: 260px;
+}
+
+.left-panel {
+    margin-top: 50px;
 }
 
 .center-panel {
