@@ -36,16 +36,21 @@
                 <p class="subtitle">Challenge your friends or battle the AI!</p>
             </div>
             <div class="status" id="status">Player 1's Turn (X)</div>
-            <div class="board" id="board">
-                <div class="cell" data-index="0"></div>
-                <div class="cell" data-index="1"></div>
-                <div class="cell" data-index="2"></div>
-                <div class="cell" data-index="3"></div>
-                <div class="cell" data-index="4"></div>
-                <div class="cell" data-index="5"></div>
-                <div class="cell" data-index="6"></div>
-                <div class="cell" data-index="7"></div>
-                <div class="cell" data-index="8"></div>
+            <div class="board-container">
+                <div class="board" id="board">
+                    <div class="cell" data-index="0"></div>
+                    <div class="cell" data-index="1"></div>
+                    <div class="cell" data-index="2"></div>
+                    <div class="cell" data-index="3"></div>
+                    <div class="cell" data-index="4"></div>
+                    <div class="cell" data-index="5"></div>
+                    <div class="cell" data-index="6"></div>
+                    <div class="cell" data-index="7"></div>
+                    <div class="cell" data-index="8"></div>
+                </div>
+                <svg class="winning-line-svg" viewBox="0 0 100 100">
+                    <line id="winning-line" x1="0" y1="0" x2="0" y2="0" stroke="none" stroke-width="4.5" stroke-linecap="round" />
+                </svg>
             </div>
             <button id="reset" class="btn reset-btn">
                 <span class="reset-icon">↻</span> New Round

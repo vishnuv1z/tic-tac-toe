@@ -204,6 +204,43 @@ function makeAIMove() {
 }
 
 
+const LINE_COORDINATES = [
+    { x1: 18.5, y1: 18.5, x2: 81.5, y2: 18.5 }, // Row 0
+    { x1: 18.5, y1: 50,   x2: 81.5, y2: 50 },   // Row 1
+    { x1: 18.5, y1: 81.5, x2: 81.5, y2: 81.5 }, // Row 2
+    { x1: 18.5, y1: 18.5, x2: 18.5, y2: 81.5 }, // Col 0
+    { x1: 50,   y1: 18.5, x2: 50,   y2: 81.5 }, // Col 1
+    { x1: 81.5, y1: 18.5, x2: 81.5, y2: 81.5 }, // Col 2
+    { x1: 18.5, y1: 18.5, x2: 81.5, y2: 81.5 }, // Diagonal 1
+    { x1: 81.5, y1: 18.5, x2: 18.5, y2: 81.5 }  // Diagonal 2
+];
+
+function highlightWinningLine(player) {
+    const winningCombinations = [
+        [0, 1, 2], [3, 4, 5], [6, 7, 8], // rows
+        [0, 3, 6], [1, 4, 7], [2, 5, 8], // cols
+        [0, 4, 8], [2, 4, 6]             // diagonals
+    ];
+
+    for (let idx = 0; idx < winningCombinations.length; idx++) {
+        const [a, b, c] = winningCombinations[idx];
+        if (board[a] === player && board[b] === player && board[c] === player) {
+            const coords = LINE_COORDINATES[idx];
+            const winningLine = document.getElementById('winning-line');
+            
+            winningLine.setAttribute('x1', coords.x1);
+            winningLine.setAttribute('y1', coords.y1);
+            winningLine.setAttribute('x2', coords.x2);
+            winningLine.setAttribute('y2', coords.y2);
+            
+            const strokeColor = player === 'x' ? '#e74c3c' : '#3498db';
+            winningLine.setAttribute('stroke', strokeColor);
+            winningLine.classList.add('active');
+            break;
+        }
+    }
+}
+
 function checkWinner() {
     const val = evaluateBoard(board);
 
@@ -214,6 +251,7 @@ function checkWinner() {
         running = false;
         player1Card.classList.add('active');
         player2Card.classList.remove('active');
+        highlightWinningLine('x');
         createConfetti();
     } else if (val === -10) {
         let winnerText = gameMode === 'PvP' ? "Player 2 Wins!" : "AI Wins!";
@@ -223,6 +261,7 @@ function checkWinner() {
         running = false;
         player2Card.classList.add('active');
         player1Card.classList.remove('active');
+        highlightWinningLine('o');
         createConfetti();
     } else if (!board.includes('')) {
         statusText.textContent = "It's a Draw!";
@@ -260,6 +299,14 @@ function resetGame(fullReset = false) {
         cell.classList.remove('x');
         cell.classList.remove('o');
     });
+
+    const winningLine = document.getElementById('winning-line');
+    winningLine.setAttribute('x1', '0');
+    winningLine.setAttribute('y1', '0');
+    winningLine.setAttribute('x2', '0');
+    winningLine.setAttribute('y2', '0');
+    winningLine.setAttribute('stroke', 'none');
+    winningLine.classList.remove('active');
     running = true;
     updateActivePlayer();
 
