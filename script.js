@@ -1,6 +1,7 @@
 const cells = document.querySelectorAll('.cell');
 const statusText = document.getElementById('status');
 const resetBtn = document.getElementById('reset');
+const resetScoresBtn = document.getElementById('reset-scores');
 const player1ScoreEl = document.getElementById('score1');
 const player2ScoreEl = document.getElementById('score2');
 const player1Card = document.getElementById('player1');
@@ -24,6 +25,7 @@ initializeGame();
 function initializeGame() {
     cells.forEach(cell => cell.addEventListener('click', cellClicked));
     resetBtn.addEventListener('click', () => resetGame(false));
+    resetScoresBtn.addEventListener('click', resetScores);
 
     modeBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
@@ -276,6 +278,12 @@ function checkWinner() {
 function updateScoreBoard() {
     player1ScoreEl.textContent = p1Score;
     player2ScoreEl.textContent = p2Score;
+}
+
+function resetScores() {
+    p1Score = 0;
+    p2Score = 0;
+    updateScoreBoard();
 }
 
 function resetGame(fullReset = false) {

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <div class="app-layout">
         <div class="left-panel">
@@ -27,6 +29,7 @@
                     </div>
                     <div class="score" id="score2">0</div>
                 </div>
+                <button id="reset-scores" class="btn reset-scores-btn">Reset Scores</button>
             </div>
         </div>
 
@@ -49,7 +52,8 @@
                     <div class="cell" data-index="8"></div>
                 </div>
                 <svg class="winning-line-svg" viewBox="0 0 100 100">
-                    <line id="winning-line" x1="0" y1="0" x2="0" y2="0" stroke="none" stroke-width="4.5" stroke-linecap="round" />
+                    <line id="winning-line" x1="0" y1="0" x2="0" y2="0" stroke="none" stroke-width="4.5"
+                        stroke-linecap="round" />
                 </svg>
             </div>
             <button id="reset" class="btn reset-btn">
@@ -76,4 +80,5 @@
     </div>
     <script src="script.js"></script>
 </body>
+
 </html>

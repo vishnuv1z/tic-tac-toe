@@ -1,5 +1,11 @@
 /* ============ RESET & BASE ============ */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
 body {
     font-family: 'Outfit', sans-serif;
@@ -53,7 +59,8 @@ body {
         width: 100%;
     }
 
-    .left-panel, .right-panel {
+    .left-panel,
+    .right-panel {
         width: 100%;
         max-width: 290px;
     }
@@ -115,7 +122,7 @@ body {
     .mode-emoji {
         font-size: 1rem;
     }
-    
+
     .status {
         font-size: 1rem;
         padding: 6px 16px;
@@ -142,7 +149,8 @@ body {
     }
 }
 
-.left-panel, .right-panel {
+.left-panel,
+.right-panel {
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -347,8 +355,15 @@ h1 {
     letter-spacing: 1px;
 }
 
-.badge-x { background: #fde2e2; color: #e74c3c; }
-.badge-o { background: #dbeafe; color: #3498db; }
+.badge-x {
+    background: #fde2e2;
+    color: #e74c3c;
+}
+
+.badge-o {
+    background: #dbeafe;
+    color: #3498db;
+}
 
 .score {
     font-size: 1.8rem;
@@ -379,7 +394,7 @@ h1 {
 }
 
 .player1.active .player-icon {
-    background: rgba(255,255,255,0.25);
+    background: rgba(255, 255, 255, 0.25);
     color: #fff;
 }
 
@@ -389,7 +404,7 @@ h1 {
 }
 
 .player1.active .badge-x {
-    background: rgba(255,255,255,0.25);
+    background: rgba(255, 255, 255, 0.25);
     color: #fff;
 }
 
@@ -402,7 +417,7 @@ h1 {
 }
 
 .player2.active .player-icon {
-    background: rgba(255,255,255,0.25);
+    background: rgba(255, 255, 255, 0.25);
     color: #fff;
 }
 
@@ -412,7 +427,7 @@ h1 {
 }
 
 .player2.active .badge-o {
-    background: rgba(255,255,255,0.25);
+    background: rgba(255, 255, 255, 0.25);
     color: #fff;
 }
 
@@ -479,6 +494,27 @@ h1 {
     border-color: #2d2d2d;
 }
 
+.reset-scores-btn {
+    width: 100%;
+    margin-top: 16px;
+    background: #fff;
+    color: #2d2d2d;
+    padding: 10px 14px;
+    font-size: 0.9rem;
+    box-shadow: 3px 3px 0 #2d2d2d;
+}
+
+.reset-scores-btn:hover {
+    background: #fde2e2;
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0 #2d2d2d;
+}
+
+.reset-scores-btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0 #2d2d2d;
+}
+
 .reset-icon {
     font-size: 1.2rem;
     display: inline-block;
@@ -514,9 +550,17 @@ h1 {
 
 /* ============ KEYFRAMES ============ */
 @keyframes popIn {
-    0% { transform: scale(0); }
-    60% { transform: scale(1.25); }
-    100% { transform: scale(1); }
+    0% {
+        transform: scale(0);
+    }
+
+    60% {
+        transform: scale(1.25);
+    }
+
+    100% {
+        transform: scale(1);
+    }
 }
 
 
@@ -525,6 +569,7 @@ h1 {
         transform: translateY(0) rotate(0deg);
         opacity: 1;
     }
+
     100% {
         transform: translateY(110vh) rotate(720deg);
         opacity: 0;
