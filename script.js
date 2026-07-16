@@ -27,8 +27,8 @@ function initializeGame() {
     modeBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
             modeBtns.forEach(b => b.classList.remove('active'));
-            e.target.classList.add('active');
-            gameMode = e.target.getAttribute('data-mode');
+            e.currentTarget.classList.add('active');
+            gameMode = e.currentTarget.getAttribute('data-mode');
             updateModeText();
             resetGame(true); // reset scores too on mode change
         });
